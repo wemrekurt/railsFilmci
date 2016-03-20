@@ -1,0 +1,9 @@
+<% if @movies.length > 0 %>
+    <% content_for :title, "Filtre Sonucu - " %>
+    <h4>Film Listesi</h4>
+    <div class="row">
+     <%= render 'list' %>
+    </div>
+<% else %>
+<h2>Film Bulunamadı</h2>
+<% end %>

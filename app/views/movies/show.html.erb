@@ -7,7 +7,7 @@
 		<p><b>Film Adı: </b><%= @movie.title %></p>
 		<p><b>Açıklama: </b><%= @movie.description %></p>
 		<p><b>Yıl:</b><%= @movie.date %></p>
-		<p><b>Ülke:</b><%= @movie.country %></p>
+		<p><b>Ülke:</b><%= link_to @movie.country, filter_path(@movie.country) %></p>
 		<p><b>Yönetmen: </b><%= @movie.director %></p>
 
 		<hr />

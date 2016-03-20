@@ -40,6 +40,10 @@ class MoviesController < ApplicationController
 		redirect_to root_path, notice: "Başarıyla Silindi"
 	end
 
+	def filter
+		@movies = Movie.all.where(country: params[:country])
+	end
+
 
 	def movie_params
 		params.require(:movie).permit(:title, :description, :date, :director, :country, :image)
