@@ -1,0 +1,30 @@
+<% content_for :title, "#{@movie.title} - " %>
+<div class="row">
+	<div class="col-xs-6 col-md-3">
+		<%= image_tag @movie.image.url(:medium) %>
+	</div>
+	<div class="col-xs-6 col-md-9">
+		<p><b>Film Adı: </b><%= @movie.title %></p>
+		<p><b>Açıklama: </b><%= @movie.description %></p>
+		<p><b>Yıl:</b><%= @movie.date %></p>
+		<p><b>Ülke:</b><%= @movie.country %></p>
+		<p><b>Yönetmen: </b><%= @movie.director %></p>
+
+		<hr />
+		<%= link_to 'Düzenle', edit_movie_path , class: "btn btn-warning" %>
+		<%= link_to "Sil", @movie , method: :delete, data: {confirm: 'Emin misin'}, class: "btn btn-danger" %>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+		<h3>Son 6 Film</h3>
+		<% @lastmovies.each do |movie| %>
+		  <div class="col-xs-4 col-md-2">
+		  	<%= link_to (image_tag movie.image.url(:small) ), movie, class: 'thumbnail' %>
+		  </div>
+		<% end %>
+	</div>
+</div>

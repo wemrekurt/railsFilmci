@@ -1,0 +1,46 @@
+<div class="row">
+
+
+    <%= form_for @movie do |m| %>
+
+    <div class="col-md-4">
+
+      <%= label_tag(:movie_title, "Film Adı") %>
+      <%= m.text_field :title, class: "form-control" %>
+
+      <%= label_tag(:movie_description, "Açıklama") %>
+      <%= m.text_area :description, class: "form-control", style: "resize: none;" %>
+
+      <%= label_tag(:movie_image, "Poster") %>
+      <%= m.file_field :image, class: "form-control" %>
+
+      <%= label_tag(:movie_date, "Yapım Yılı") %>
+      <%= m.number_field :date, class: "form-control" %>
+
+      <%= label_tag(:movie_director, "Yönetmen") %>
+      <%= m.text_field :director, class:"form-control" %>
+
+      <%= label_tag(:movie_country, "Ülke") %>
+      <%= m.text_field :country, class: "form-control" %>
+        <br />
+      <%= submit_tag "Gönder", class: "btn btn-success" %>
+    </div>
+
+    <div class="col-md-6">
+      <% if @movie.errors.any? %>
+        <h2><%= pluralize(@movie.errors.count, "error") %></h2>
+
+          <% @movie.errors.full_messages.each do |msg| %>
+          <div class="alert alert-danger" role="alert">
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+            <span class="sr-only">Error:</span>
+              <%= msg %>
+            </div>
+        <% end %>
+
+      <% end %>
+    </div>
+
+    <% end %>
+
+</div>

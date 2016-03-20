@@ -1,0 +1,16 @@
+<h1>Anasayfa</h1>
+
+<h4>Film Listesi</h4>
+<div class="row">
+<% @movies.each do |movie| %>
+    <div class="col-sm-6 col-md-4">
+        <div class="thumbnail">
+         
+          <div class="caption">
+            <h3><%= link_to movie.title, movie %></h3>
+            <p><%= movie.description %></p>
+          </div>
+        </div>
+      </div>
+<% end %>
+</div>
