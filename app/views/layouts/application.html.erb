@@ -27,6 +27,15 @@
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <%= current_user.email %>
+          <%= active_link_to 'Çıkış', destroy_user_session_path, method: :delete, :wrap_tag => :li %>
+          <%= active_link_to 'Admin', rails_admin_path if current_user.admin %>
+        <% else %>
+          <%= active_link_to 'Giriş', new_user_session_path, :wrap_tag => :li %>
+          <%= active_link_to 'Kayıt', new_user_registration_path, :wrap_tag => :li %>
+
+        <% end %>
         <%= active_link_to 'Yeni Film Ekle', new_movie_path, :wrap_tag => :li %>
       </ul>
     </div><!--/.nav-collapse -->
@@ -34,12 +43,14 @@
 </nav>
 
 <div class="container">
+  <p class="alert"><%= alert %></p>
+
   <% if flash.notice %>
   <div class="alert alert-info" role="alert">
     <%= flash.notice %>
   </div>
   <% end %>
-  
+
 	<%= yield %>
 </div>
 

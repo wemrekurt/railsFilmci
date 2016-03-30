@@ -1,8 +1,11 @@
 class MoviesController < ApplicationController
 	before_action :find_movie, only:[:show, :edit, :update, :destroy]
+	before_action :authenticate_user!, only:[:new, :create]
 
 	def show
 		@lastmovies = Movie.last(6)
+		@rating = Rating.new
+		# Son 6 kayıtı listele sorgusu böyle :)
 	end
 
 	def new
@@ -11,7 +14,6 @@ class MoviesController < ApplicationController
 
 	def create
 		@movie = Movie.new movie_params
-
 		if @movie.save
 			redirect_to @movie , notice: "Başarılya Oluşturuldu"
 		else

@@ -2,6 +2,19 @@
 <div class="row">
 	<div class="col-xs-6 col-md-3">
 		<%= image_tag @movie.image.url(:medium) %>
+		<% if current_user %>
+			<%= form_for @rating do |f| %>
+			<%= f.hidden_field :movie_id, :value => @movie.id %>
+			  <%= f.radio_button :point, "1" %>
+				<%= label_tag(:point_1, '+1') %>
+
+			  <%= f.radio_button :point,"-1"%>
+				<%= label_tag(:point_1, '-1') %>
+				<%= submit_tag "Kaydet", class: "btn btn-success" %>
+
+			<% end %>
+
+		<% end %>
 	</div>
 	<div class="col-xs-6 col-md-9">
 		<p><b>Film Adı: </b><%= @movie.title %></p>
